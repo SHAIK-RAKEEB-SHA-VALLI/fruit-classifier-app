@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classifier for Fruits</title>
+    <meta name="description" content="Upload an image or use your camera to identify different types of fruits.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>🍎 Image Classifier for Fruits</h1>
+            <p class="app-description">Upload a photo or use your camera to identify different types of fruits.</p>
+        </header>
+
+        <main class="main-content">
+            <section class="upload-section" id="upload-section">
+                <div class="upload-container">
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="file-input" accept="image/*" class="file-input">
+                        <div class="upload-content">
+                            <div class="upload-icon">📤</div>
+                            <h3>Upload an Image of a Fruit</h3>
+                            <p>Or drag and drop a file here</p>
+                        </div>
+                    </div>
+                    <button class="btn btn--secondary" id="camera-btn">📷 Use Camera</button>
+                </div>
+            </section>
+
+            <section class="camera-section hidden" id="camera-section">
+                <div class="camera-container">
+                    <video id="camera-video" class="camera-video" autoplay playsinline muted></video>
+                    <canvas id="camera-canvas" class="camera-canvas"></canvas>
+                </div>
+                <div class="camera-controls">
+                    <button class="btn btn--primary" id="capture-btn">📸 Take Photo</button>
+                    <button class="btn btn--outline" id="stop-camera-btn">❌ Stop Camera</button>
+                </div>
+            </section>
+
+            <section class="image-preview hidden" id="image-preview">
+                <div class="card">
+                    <div class="card__body">
+                        <h3 style="text-align: center; margin-bottom: 1rem;">Image Preview</h3>
+                        <div class="preview-container">
+                            <img id="preview-image" class="preview-image" alt="Preview">
+                        </div>
+                        <div class="preview-actions">
+                            <button class="btn btn--primary" id="classify-btn">🔍 Identify Fruit</button>
+                            <button class="btn btn--outline" id="reset-btn">🔄 Try Another</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="loading-section hidden" id="loading-section">
+                <div class="card">
+                    <div class="card__body" style="text-align: center;">
+                        <div class="loading-spinner"></div>
+                        <h3>Analyzing image...</h3>
+                        <p>Our AI is identifying the fruit. Please wait.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-section hidden" id="results-section">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="result-display">
+                             <h3 style="color: var(--color-text-secondary); margin-bottom: 1rem;">I think it's a...</h3>
+                            <h2 class="result-name" id="result-name"></h2>
+                        </div>
+                        <div class="results-actions">
+                            <button class="btn btn--primary" id="classify-another-btn">Identify Another Fruit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="error-section hidden" id="error-section">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="error-content">
+                            <div class="error-icon">⚠️</div>
+                            <h3>Something went wrong</h3>
+                            <p id="error-message">An error occurred.</p>
+                            <button class="btn btn--secondary" id="try-again-btn">Try Again</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
